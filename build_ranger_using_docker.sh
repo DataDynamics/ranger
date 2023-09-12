@@ -56,31 +56,31 @@ if [ $build_image -eq 1 ]; then
     docker rmi -f $image_name
 
 docker build -t $image_name - <<Dockerfile
-FROM centos
+FROM centos:centos7.9.2009
 
 RUN mkdir /tools
 WORKDIR /tools
 
 #Install default services
 #RUN yum clean all
-RUN yum install -y wget
+RUN yum install -y wget curl
 RUN yum install -y git
 RUN yum install -y gcc
 RUN yum install -y bzip2 fontconfig
 
-#Download and install JDK8 from AWS s3's docker-assets 
-RUN wget https://s3.eu-central-1.amazonaws.com/docker-assets/dist/jdk-8u101-linux-x64.rpm
-RUN rpm -i jdk-8u101-linux-x64.rpm
+#Download and install JDK8 from AWS s3's docker-assets
+RUN yum install -y java-1.8.0-openjdk-devel
+#RUN rpm -i jdk-8u101-linux-x64.rpm
 
 ENV JAVA_HOME /usr/java/latest
 ENV  PATH $JAVA_HOME/bin:$PATH
 
 
-ADD https://www.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz.sha512 /tools
-ADD http://www-us.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz /tools
-RUN sha512sum  apache-maven-3.5.4-bin.tar.gz | cut -f 1 -d " " > tmp.sha1
+ADD https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.5.4/apache-maven-3.5.4-bin.tar.gz.sha1 /tools
+ADD https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.5.4/apache-maven-3.5.4-bin.tar.gz /tools
+RUN sha1sum  apache-maven-3.5.4-bin.tar.gz | cut -f 1 -d " " > tmp.sha1
 
-RUN diff -w tmp.sha1 apache-maven-3.5.4-bin.tar.gz.sha512
+RUN diff -w tmp.sha1 apache-maven-3.5.4-bin.tar.gz.sha1
 
 RUN tar xfz apache-maven-3.5.4-bin.tar.gz
 RUN ln -sf /tools/apache-maven-3.5.4 /tools/maven

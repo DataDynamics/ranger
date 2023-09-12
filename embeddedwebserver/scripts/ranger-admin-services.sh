@@ -56,6 +56,7 @@ if [ -z "${RANGER_ADMIN_LOG_DIR}" ]
 then
 	RANGER_ADMIN_LOG_DIR=${XAPOLICYMGR_EWS_DIR}/logs
 fi
+mkdir -p ${RANGER_ADMIN_LOG_DIR}
 
 if [ -z "${RANGER_ADMIN_LOGBACK_CONF_FILE}" ]
 then
