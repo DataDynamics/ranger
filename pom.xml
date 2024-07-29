@@ -26,6 +26,9 @@
     <artifactId>ranger</artifactId>
     <version>3.0.0-SNAPSHOT</version>
     <description>Security for Enforcing Enterprise Policies</description>
+    <modules>
+        <module>plugin-unitycatalog</module>
+    </modules>
     <packaging>pom</packaging>
     <name>ranger</name>
     <url>http://ranger.apache.org/</url>
@@ -294,6 +297,7 @@
                 <module>plugin-nifi-registry</module>
                 <module>plugin-presto</module>
                 <module>plugin-kudu</module>
+                <module>plugin-unitycatalog</module>
                 <module>ugsync-util</module>
                 <module>ugsync</module>
                 <module>ugsync/ldapconfigchecktool/ldapconfigcheck</module>
@@ -365,6 +369,7 @@
                 <module>plugin-presto</module>
                 <module>plugin-trino</module>
                 <module>plugin-kudu</module>
+                <module>plugin-unitycatalog</module>
                 <module>ugsync-util</module>
                 <module>ugsync</module>
                 <module>ugsync/ldapconfigchecktool/ldapconfigcheck</module>
@@ -692,6 +697,7 @@
                 <module>plugin-nifi</module>
                 <module>plugin-nifi-registry</module>
                 <module>plugin-kudu</module>
+                <module>plugin-unitycatalog</module>
                 <module>ugsync-util</module>
                 <module>ugsync</module>
                 <module>ugsync/ldapconfigchecktool/ldapconfigcheck</module>

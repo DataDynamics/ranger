@@ -1,0 +1,137 @@
+{
+  "name": "unitycatalog",
+  "displayName": "Unity Catalog",
+  "implClass": "org.apache.ranger.services.uc.RangerServiceUC",
+  "label": "UnityCatalog",
+  "description": "OSS Unity Catalog",
+  "resources": [
+    {
+      "itemId": 1,
+      "name": "catalog",
+      "type": "string",
+      "level": 10,
+      "parent": "",
+      "mandatory": true,
+      "lookupSupported": true,
+      "recursiveSupported": false,
+      "excludesSupported": false,
+      "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+      "matcherOptions": {
+        "wildCard": true,
+        "ignoreCase": false
+      },
+      "validationRegEx": "",
+      "validationMessage": "",
+      "uiHint": "",
+      "label": "Catalog",
+      "description": "Catalog"
+    },
+    {
+      "itemId": 2,
+      "name": "schema",
+      "type": "string",
+      "level": 20,
+      "parent": "catalog",
+      "mandatory": true,
+      "lookupSupported": true,
+      "recursiveSupported": false,
+      "excludesSupported": false,
+      "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+      "matcherOptions": {
+        "wildCard": true,
+        "ignoreCase": false
+      },
+      "validationRegEx": "",
+      "validationMessage": "",
+      "uiHint": "",
+      "label": "Schema",
+      "description": "Schema"
+    },
+    {
+      "itemId": 3,
+      "name": "table",
+      "type": "string",
+      "level": 30,
+      "parent": "schema",
+      "mandatory": true,
+      "lookupSupported": true,
+      "recursiveSupported": false,
+      "excludesSupported": false,
+      "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+      "matcherOptions": {
+        "wildCard": true,
+        "ignoreCase": false
+      },
+      "validationRegEx": "",
+      "validationMessage": "",
+      "uiHint": "",
+      "label": "Table",
+      "description": "Table"
+    }
+  ],
+  "accessTypes": [
+    {
+      "itemId": 1,
+      "name": "select",
+      "label": "Select"
+    },
+    {
+      "itemId": 2,
+      "name": "update",
+      "label": "Update"
+    },
+    {
+      "itemId": 3,
+      "name": "create",
+      "label": "Create"
+    },
+    {
+      "itemId": 4,
+      "name": "drop",
+      "label": "Drop"
+    },
+    {
+      "itemId": 5,
+      "name": "alter",
+      "label": "Alter"
+    },
+    {
+      "itemId": 6,
+      "name": "all",
+      "label": "All",
+      "impliedGrants": [
+        "select",
+        "update",
+        "create",
+        "drop",
+        "alter"
+      ]
+    }
+  ],
+  "configs": [
+    {
+      "itemId": 1,
+      "name": "username",
+      "type": "string",
+      "mandatory": true,
+      "label": "Username"
+    },
+    {
+      "itemId": 2,
+      "name": "password",
+      "type": "password",
+      "mandatory": true,
+      "label": "Password"
+    },
+    {
+      "itemId": 3,
+      "name": "uc.url",
+      "type": "string",
+      "mandatory": true,
+      "defaultValue": "http://localhost:8080",
+      "label": "Unity Catalog URL",
+      "validationRegEx": "^https?://\\S+$",
+      "validationMessage": "Must starts with http[s]://"
+    }
+  ]
+}
